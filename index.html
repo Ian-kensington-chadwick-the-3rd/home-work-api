@@ -7,6 +7,39 @@
 </head>
 <body>
     <div id="container"></div>
-    <script src="/script.js"></script>
+    
+    
+<style type="text/css">
+    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}
+    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}
+    .tftable tr {background-color:#ffffff;}
+    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}
+    .tftable tr:hover {background-color:#e0ffff;}
+</style>
+
+<table class="tftable" border="1">
+    <tr>
+        <th>Date</th>
+        <th>Temperature (°C)</th>
+        <th>Weather</th>
+    </tr>
+    
+    {{#each response.list}}
+        <tr>
+            <td>{{dt_txt}}</td>
+            <td>{{main.temp}}</td>
+            <td>{{weather.[0].description}}</td>
+        </tr>
+    {{/each}}
+</table>
+`;
+
+
+    
+    
+    
+    
+    
+    <script src="./assets/script.js"></script>
 </body>
 </html>
