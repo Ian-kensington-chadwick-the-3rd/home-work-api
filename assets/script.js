@@ -40,8 +40,13 @@ var getUserRepos = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(displayWeather(data)) 
-          console.log(data)
+          console.log(displayWeatherTemp(data)) 
+          console.log(displayWeatherDate(data))
+          
+          
+          
+          
+          // console.log(data)
         
         });
       } else {
@@ -52,18 +57,49 @@ var getUserRepos = function (city) {
       alert('error');
     });
 };
- function displayWeather(data){
-  for(let i = 0; i < infoWeather.length; i++){
-       console.log(infoWeather.length)
-  }
-    var infoWeather = (data.list);
+ 
+// var list = (data.list.main)
+ 
+function displayWeatherTemp(data){
+  var infoWeather = (data.list[0].main.temp);
+  var infoWeatherDate =(data.list[0].dt_txt)
+  console.log(data)
+  var infoDate = document.createElement('li');
   var info = document.createElement('li');
-  //  info.innerText = infoWeather;
-  info.innerText = infoWeather.temp;
+  info.innerText = infoWeather.temp
+  infoDate.innerText = infoWeatherDate
   document.getElementById('display').appendChild(info);
-
-
+  document.getElementById('display').appendChild(infoDate);
 }
+
+function displayWeatherDate(data){
+  var infoWeather = (data.list[0].dt_txt);
+  console.log(data)
+  var info = document.createElement('li');
+  info.innerText = infoWeather
+  document.getElementById('display').appendChild(info);
+}
+
+function displayWeatherName(data){
+  var infoWeather = (data.list[0].main);
+  console.log(data)
+  var info = document.createElement('li');
+  info.innerText = infoWeather;
+  info.innerText = infoWeather.temp
+  document.getElementById('display').appendChild(info);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

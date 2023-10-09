@@ -10,6 +10,14 @@
   * {
     box-sizing: border-box;
   }
+  .header{
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    background-color: #000000;
+    color: white;
+    font-size: 25px;
+  }
   
   body {
     background-color: var(--primary);
