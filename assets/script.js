@@ -4,14 +4,14 @@ var nameInputEl = document.querySelector('#username');
 var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 
-
+var data = this
 
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
   var city = nameInputEl.value.trim();
-
+   
   if (city) {
     getUserRepos(city);
 
@@ -40,15 +40,9 @@ var getUserRepos = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-         var infoWeather = console.log(data.list[0].main,{
-            method:'get'
-         });
-            var info = document.createElement('li')
-           const textnode = document.createTextNode(infoWeather)
-           info.appendChild(textnode);
-           document.getElementById('display').appendChild(info);
-       
-            //   displayRepos(data, city);
+          console.log(displayWeather(data)) 
+          console.log(data)
+        
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -58,8 +52,17 @@ var getUserRepos = function (city) {
       alert('error');
     });
 };
- function displayRepos(){
- 
+ function displayWeather(data){
+  for(let i = 0; i < infoWeather.length; i++){
+       console.log(infoWeather.length)
+  }
+    var infoWeather = (data.list);
+  var info = document.createElement('li');
+  //  info.innerText = infoWeather;
+  info.innerText = infoWeather.temp;
+  document.getElementById('display').appendChild(info);
+
+
 }
 
 
@@ -97,3 +100,14 @@ userFormEl.addEventListener('submit', formSubmitHandler);
 //     })
     
 // }
+
+
+
+// var infoWeather = (data.list[0].main);
+// console.log(data)
+//    var info = document.createElement('li');
+//  //  info.innerText = infoWeather;
+//  info.innerText = infoWeather.temp;
+//  document.getElementById('display').appendChild(info);
+
+//    //   displayRepos(data, city);
