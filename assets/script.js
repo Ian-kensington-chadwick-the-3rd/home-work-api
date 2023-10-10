@@ -99,7 +99,7 @@ function displayForcastTemp1(data){
   var infoDate = document.getElementById('city1');
   var info = document.getElementById('temp1');
   var infoName =document.getElementById('date1');
-  var infoImoji =document.getElementById('imoji');
+  var infoImoji =document.getElementById('imoji1');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp + ' °F';
   infoDate.innerText = infoWeather.dt_txt + ' date'; 
@@ -121,14 +121,17 @@ function displayForcastTemp2(data){
   var infoDate = document.getElementById('city2');
   var info = document.getElementById('temp2');
   var infoName =document.getElementById('date2');
+  var infoImoji =document.getElementById('imoji2');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp + ' °F';
   infoDate.innerText = infoWeather.dt_txt + ' date';
   infoName.innerText= cityName + ' City'
+  infoImoji.innerText = infoWeather.weather[0].description;
   // displaying my elements from the api
   document.getElementById('display2').appendChild(infoName);
   document.getElementById('display2').appendChild(info);
   document.getElementById('display2').appendChild(infoDate);
+  document.getElementById('display2').appendChild(infoImoji);
 }
 function displayForcastTemp3(data){
   // making my main branch variables that my innerText will branch off from
@@ -140,14 +143,17 @@ function displayForcastTemp3(data){
   var infoDate = document.getElementById('city3');
   var info = document.getElementById('temp3');
   var infoName =document.getElementById('date3');
+  var infoImoji =document.getElementById('imoji3');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp + ' °F';
   infoDate.innerText = infoWeather.dt_txt + ' date';
   infoName.innerText= cityName  + ' City';
+  infoImoji.innerText = infoWeather.weather[0].description;
   // displaying my elements from the api
   document.getElementById('display3').appendChild(infoName);
   document.getElementById('display3').appendChild(info);
   document.getElementById('display3').appendChild(infoDate);
+  document.getElementById('display3').appendChild(infoImoji);
 }
 function displayForcastTemp4(data){
   // making my main branch variables that my innerText will branch off from
@@ -159,14 +165,17 @@ function displayForcastTemp4(data){
   var infoDate = document.getElementById('city4');
   var info = document.getElementById('temp4');
   var infoName =document.getElementById('date4');
+  var infoImoji =document.getElementById('imoji4');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp + ' °F';
   infoDate.innerText = infoWeather.dt_txt + ' date';
   infoName.innerText= cityName + ' City';
+  infoImoji.innerText = infoWeather.weather[0].description;
   // displaying my elements from the api
   document.getElementById('display4').appendChild(infoName);
   document.getElementById('display4').appendChild(info);
   document.getElementById('display4').appendChild(infoDate);
+  document.getElementById('display4').appendChild(infoImoji);
 }
 function displayForcastTemp5(data){
   // making my main branch variables that my innerText will branch off from
@@ -178,14 +187,17 @@ function displayForcastTemp5(data){
   var infoDate = document.getElementById('city5');
   var info = document.getElementById('temp5');
   var infoName =document.getElementById('date5');
+  var infoImoji =document.getElementById('imoji5');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp + ' °F';
   infoDate.innerText = infoWeather.dt_txt + ' date';
   infoName.innerText= cityName + ' City';
+  infoImoji.innerText = infoWeather.weather[0].description;
   // displaying my elements from the api
   document.getElementById('display5').appendChild(infoName);
   document.getElementById('display5').appendChild(info);
   document.getElementById('display5').appendChild(infoDate);
+  document.getElementById('display5').appendChild(infoImoji);
 }
 
 function ShowingValue(){
