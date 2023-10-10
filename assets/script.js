@@ -17,6 +17,9 @@ var formSubmitHandler = function (event) {
     grabWeatherApi(city);
    
     nameInputEl.value = '';
+    localStorage.setItem(nameInputEl.value, city )
+    localStorage.getItem(nameInputEl.value)
+
   } else {
     alert('Please enter a City name');
   }
@@ -75,7 +78,10 @@ function grabWeatherApi(city){
 // var list = (data.list.main)
  function grabWeatherApi1(){
   var info
- }
+//  still need too display weatherApi for current day on the screen
+
+
+}
 
  
 
@@ -88,19 +94,22 @@ function displayForcastTemp1(data){
   var infoWeather = (data.list[0]);
   var cityName = (data.city.name);
   // console logging data so that if all else goes wrong i can still see through my api tree dom
-  
+  console.log(data)
   // creating my 'li' elements to go in my ul
   var infoDate = document.getElementById('city1');
   var info = document.getElementById('temp1');
   var infoName =document.getElementById('date1');
+  var infoImoji =document.getElementById('imoji');
   // using innerText to create the items I want from weather api
-  info.innerText = infoWeather.main.temp;
-  infoDate.innerText = infoWeather.dt_txt;
-  infoName.innerText= cityName;
+  info.innerText = infoWeather.main.temp + ' °F';
+  infoDate.innerText = infoWeather.dt_txt + ' date'; 
+  infoName.innerText= cityName + ' City';
+  infoImoji.innerText = infoWeather.weather[0].description;
   // displaying my elements from the api
   document.getElementById('display1').appendChild(infoName);
   document.getElementById('display1').appendChild(info);
   document.getElementById('display1').appendChild(infoDate);
+  document.getElementById('display1').appendChild(infoImoji);
 }
 function displayForcastTemp2(data){
   // making my main branch variables that my innerText will branch off from
@@ -113,9 +122,9 @@ function displayForcastTemp2(data){
   var info = document.getElementById('temp2');
   var infoName =document.getElementById('date2');
   // using innerText to create the items I want from weather api
-  info.innerText = infoWeather.main.temp
-  infoDate.innerText = infoWeather.dt_txt
-  infoName.innerText= cityName
+  info.innerText = infoWeather.main.temp + ' °F';
+  infoDate.innerText = infoWeather.dt_txt + ' date';
+  infoName.innerText= cityName + ' City'
   // displaying my elements from the api
   document.getElementById('display2').appendChild(infoName);
   document.getElementById('display2').appendChild(info);
@@ -132,9 +141,9 @@ function displayForcastTemp3(data){
   var info = document.getElementById('temp3');
   var infoName =document.getElementById('date3');
   // using innerText to create the items I want from weather api
-  info.innerText = infoWeather.main.temp
-  infoDate.innerText = infoWeather.dt_txt
-  infoName.innerText= cityName
+  info.innerText = infoWeather.main.temp + ' °F';
+  infoDate.innerText = infoWeather.dt_txt + ' date';
+  infoName.innerText= cityName  + ' City';
   // displaying my elements from the api
   document.getElementById('display3').appendChild(infoName);
   document.getElementById('display3').appendChild(info);
@@ -151,9 +160,9 @@ function displayForcastTemp4(data){
   var info = document.getElementById('temp4');
   var infoName =document.getElementById('date4');
   // using innerText to create the items I want from weather api
-  info.innerText = infoWeather.main.temp
-  infoDate.innerText = infoWeather.dt_txt
-  infoName.innerText= cityName
+  info.innerText = infoWeather.main.temp + ' °F';
+  infoDate.innerText = infoWeather.dt_txt + ' date';
+  infoName.innerText= cityName + ' City';
   // displaying my elements from the api
   document.getElementById('display4').appendChild(infoName);
   document.getElementById('display4').appendChild(info);
@@ -170,15 +179,19 @@ function displayForcastTemp5(data){
   var info = document.getElementById('temp5');
   var infoName =document.getElementById('date5');
   // using innerText to create the items I want from weather api
-  info.innerText = infoWeather.main.temp
-  infoDate.innerText = infoWeather.dt_txt
-  infoName.innerText= cityName
+  info.innerText = infoWeather.main.temp + ' °F';
+  infoDate.innerText = infoWeather.dt_txt + ' date';
+  infoName.innerText= cityName + ' City';
   // displaying my elements from the api
   document.getElementById('display5').appendChild(infoName);
   document.getElementById('display5').appendChild(info);
   document.getElementById('display5').appendChild(infoDate);
 }
 
+function ShowingValue(){
+ document.getElementById('repo-search-term')
+
+}
 
  
 
