@@ -253,4 +253,12 @@
   .col-auto {
     flex-grow: 1;
   }
-  
+  .border{
+    border:3px solid black;
+    width: 200px;
+  }
+  .flexmid{
+    display: flex;
+    justify-content: center;
+    border-bottom: 3px solid #000000;
+  }

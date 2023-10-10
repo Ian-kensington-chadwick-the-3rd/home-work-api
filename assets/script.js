@@ -1,6 +1,6 @@
 var userFormEl = document.querySelector('#user-form');
 var languageButtonsEl = document.querySelector('#language-buttons');
-var nameInputEl = document.querySelector('#username');
+var nameInputEl = document.querySelector('#cityName');
 var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 
@@ -11,10 +11,10 @@ var formSubmitHandler = function (event) {
   event.preventDefault();
 
   var city = nameInputEl.value.trim();
-   
+   console.log(city);
   if (city) {
     getUserRepos(city);
-
+    grabWeatherApi(city);
    
     nameInputEl.value = '';
   } else {
@@ -22,37 +22,20 @@ var formSubmitHandler = function (event) {
   }
 };
 
-// var buttonClickHandler = function (event) {
-//   var language = event.target.getAttribute('data-language');
-
-//   if (language) {
-//     getFeaturedRepos(language);
-
-//     repoContainerEl.textContent = '';
-//   }
-// };
-
 var getUserRepos = function (city) {
- 
+
   var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=de7a2c93ef7ff607a0e6abf6ee0aa990&units=imperial';
 
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(displayWeatherTemp1(data)) 
-          // console.log(displayWeatherTemp2(data)) 
-          // console.log(displayWeatherTemp3(data)) 
-          // console.log(displayWeatherTemp4(data)) 
-          // console.log(displayWeatherTemp5(data)) 
-
-          // console.log(displayWeatherDate(data))
-          
-          
-          
-          
-          // console.log(data)
-        
+          console.log(displayForcastTemp1(data)) 
+          console.log(displayForcastTemp2(data)) 
+          console.log(displayForcastTemp3(data)) 
+          console.log(displayForcastTemp4(data)) 
+          console.log(displayForcastTemp5(data)) 
+          console.log(data)
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -62,10 +45,45 @@ var getUserRepos = function (city) {
       alert('error');
     });
 };
+
  
+function grabWeatherApi(city){
+  
+  var apiUrl1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=de7a2c93ef7ff607a0e6abf6ee0aa990&'
+  
+  
+  console.log(city)
+  fetch(apiUrl1)
+.then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        // console.log(displayWeatherTemp1(data)) 
+        // console.log(displayWeatherTemp2(data)) 
+        // console.log(displayWeatherTemp3(data)) 
+        // console.log(displayWeatherTemp4(data)) 
+        // console.log(displayWeatherTemp5(data)) 
+        console.log(data)
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
+  })
+  .catch(function (error) {
+    alert('error');
+  });
+};
 // var list = (data.list.main)
+ function grabWeatherApi1(){
+  var info
+ }
+
  
-function displayWeatherTemp1(data){
+
+
+
+
+
+function displayForcastTemp1(data){
   // making my main branch variables that my innerText will branch off from
   var infoWeather = (data.list[0]);
   var cityName = (data.city.name);
@@ -84,7 +102,7 @@ function displayWeatherTemp1(data){
   document.getElementById('display1').appendChild(info);
   document.getElementById('display1').appendChild(infoDate);
 }
-function displayWeatherTemp2(data){
+function displayForcastTemp2(data){
   // making my main branch variables that my innerText will branch off from
   var infoWeather = (data.list[8]);
   var cityName = (data.city.name);
@@ -103,16 +121,16 @@ function displayWeatherTemp2(data){
   document.getElementById('display2').appendChild(info);
   document.getElementById('display2').appendChild(infoDate);
 }
-function displayWeatherTemp3(data){
+function displayForcastTemp3(data){
   // making my main branch variables that my innerText will branch off from
   var infoWeather = (data.list[16]);
   var cityName = (data.city.name);
   // console logging data so that if all else goes wrong i can still see through my api tree dom
   console.log(data);
   // creating my 'li' elements to go in my ul
-  var infoDate = document.createElement('li');
-  var info = document.createElement('li');
-  var infoName =document.createElement('li');
+  var infoDate = document.getElementById('city3');
+  var info = document.getElementById('temp3');
+  var infoName =document.getElementById('date3');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp
   infoDate.innerText = infoWeather.dt_txt
@@ -122,16 +140,16 @@ function displayWeatherTemp3(data){
   document.getElementById('display3').appendChild(info);
   document.getElementById('display3').appendChild(infoDate);
 }
-function displayWeatherTemp4(data){
+function displayForcastTemp4(data){
   // making my main branch variables that my innerText will branch off from
   var infoWeather = (data.list[24]);
   var cityName = (data.city.name);
   // console logging data so that if all else goes wrong i can still see through my api tree dom
   console.log(data);
   // creating my 'li' elements to go in my ul
-  var infoDate = document.createElement('li');
-  var info = document.createElement('li');
-  var infoName =document.createElement('li');
+  var infoDate = document.getElementById('city4');
+  var info = document.getElementById('temp4');
+  var infoName =document.getElementById('date4');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp
   infoDate.innerText = infoWeather.dt_txt
@@ -141,16 +159,16 @@ function displayWeatherTemp4(data){
   document.getElementById('display4').appendChild(info);
   document.getElementById('display4').appendChild(infoDate);
 }
-function displayWeatherTemp5(data){
+function displayForcastTemp5(data){
   // making my main branch variables that my innerText will branch off from
   var infoWeather = (data.list[32]);
   var cityName = (data.city.name);
   // console logging data so that if all else goes wrong i can still see through my api tree dom
   console.log(data);
   // creating my 'li' elements to go in my ul
-  var infoDate = document.createElement('li');
-  var info = document.createElement('li');
-  var infoName =document.createElement('li');
+  var infoDate = document.getElementById('city5');
+  var info = document.getElementById('temp5');
+  var infoName =document.getElementById('date5');
   // using innerText to create the items I want from weather api
   info.innerText = infoWeather.main.temp
   infoDate.innerText = infoWeather.dt_txt
@@ -161,9 +179,14 @@ function displayWeatherTemp5(data){
   document.getElementById('display5').appendChild(infoDate);
 }
 
+
+ 
+
+
+
 // save when click on search button and is a valid city
 // persistant data 
-// 
+
 
 
 
@@ -182,6 +205,15 @@ userFormEl.addEventListener('submit', formSubmitHandler);
 
 
 
+// var buttonClickHandler = function (event) {
+//   var language = event.target.getAttribute('data-language');
+
+//   if (language) {
+//     getFeaturedRepos(language);
+
+//     repoContainerEl.textContent = '';
+//   }
+// };
 
 
 // languageButtonsEl.addEventListener('click', buttonClickHandler);
