@@ -5,23 +5,37 @@ var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 
 var data = this
-var city;
-function storage(city){
+var citysArr= [];
 
-  localStorage.setItem('storedCity',JSON.stringify(city))
+function storage(citysArr){
+
+  localStorage.setItem('storedCity',JSON.stringify(citysArr))
 
 }
 function displayStorage(){
-localStorage.getItem('storedCity')
+var storedCity=JSON.parse(localStorage.getItem('storedCity'));
+console.log(storedCity)
+for (let i=0; i < storedCity.length; i++){
+  var newButton= document.createElement("button");
+  newButton.textContent = storedCity[i];
+  document.getElementById('localStorageContent');
+  console.log(document.getElementById('localStorageContent'));
+  // document.createElement('button')
+
+   document.getElementById('localStorageContent').appendChild(newButton);
+
+// document.createElement('button').textContent();
 }
+}
+
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
   var city = nameInputEl.value.trim();
    console.log(city);
   if (city) {
-    getUserRepos(city);
-    grabWeatherApi(city);
+     getUserRepos(city);
+     grabWeatherApi(city);
    
     nameInputEl.value = '';
     
@@ -39,12 +53,14 @@ var getUserRepos = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log(displayForcastTemp1(data)) 
-          console.log(displayForcastTemp2(data)) 
-          console.log(displayForcastTemp3(data)) 
-          console.log(displayForcastTemp4(data)) 
-          console.log(displayForcastTemp5(data)) 
-          // storage(city);
+          console.log(displayForcastTemp1(data)); 
+          console.log(displayForcastTemp2(data));
+          console.log(displayForcastTemp3(data)); 
+          console.log(displayForcastTemp4(data)); 
+          console.log(displayForcastTemp5(data));
+          citysArr.push(city);
+         
+          storage(citysArr);
           displayPersonal();
           
           console.log(data)
