@@ -38,6 +38,7 @@ var getUserRepos = function (city) {
           console.log(displayForcastTemp3(data)) 
           console.log(displayForcastTemp4(data)) 
           console.log(displayForcastTemp5(data)) 
+          
           console.log(data)
         });
       } else {
@@ -52,7 +53,7 @@ var getUserRepos = function (city) {
  
 function grabWeatherApi(city){
   
-  var apiUrl1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=de7a2c93ef7ff607a0e6abf6ee0aa990&'
+  var apiUrl1 = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=de7a2c93ef7ff607a0e6abf6ee0aa990&units=imperial'
   
   
   console.log(city)
@@ -65,6 +66,7 @@ function grabWeatherApi(city){
         // console.log(displayWeatherTemp3(data)) 
         // console.log(displayWeatherTemp4(data)) 
         // console.log(displayWeatherTemp5(data)) 
+        console.log(grabWeatherApi1(data))
         console.log(data)
       });
     } else {
@@ -76,14 +78,39 @@ function grabWeatherApi(city){
   });
 };
 // var list = (data.list.main)
- function grabWeatherApi1(){
-  var info
-//  still need too display weatherApi for current day on the screen
+ function grabWeatherApi1(data){
+//  var grabWeather1 = (data.main.temp)
+//  var grabWeather1 = document.getElementById('cityName1');
+// grabWeather1.innerText=
+ 
+ 
+//  console.log(grabWeather1)
+
+var grabWeather1 = (data.main);
+var grabWeather0 = (data)// console logging data so that if all else goes wrong i can still see through my api tree dom
+console.log(data)
+// creating my 'li' elements to go in my ul
+var infoName = document.getElementById('cityName1');
+var info1 = document.getElementById('cityTemp');
+
+// using innerText to create the items I want from weather api
+info1.innerText = grabWeather1.temp + ' °F';
+infoName.innerText= grabWeather0.name + ' City';
+// displaying my elements from the api
+document.getElementById('display6').appendChild(infoName);
+document.getElementById('display6').appendChild(info1);
+document.getElementById('display6').appendChild(infoDate);
+
+
 
 
 }
+function displayPersonal(){
+  var today = dayjs('MMM D, YYYY');
+  $('#displaypersonal').text(today.format('MMM D, YYYY'));
+// document.getElementById('displayPersonal1')
+}
 
- 
 
 
 
