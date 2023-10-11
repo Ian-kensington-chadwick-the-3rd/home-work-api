@@ -282,8 +282,6 @@
   justify-content:center;
 }
 .center{
-  /* display: flex;
-  justify-content: center; */
   text-align: center;
-  list-style: none;
+  
 }
