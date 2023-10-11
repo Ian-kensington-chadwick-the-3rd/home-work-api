@@ -21,8 +21,8 @@ for (let i=0; i < storedCity.length; i++){
   document.getElementById('localStorageContent');
   console.log(document.getElementById('localStorageContent'));
   // document.createElement('button')
+document.getElementById('localStorageContent').appendChild(newButton);
 
-   document.getElementById('localStorageContent').appendChild(newButton);
 
 // document.createElement('button').textContent();
 }
@@ -36,7 +36,7 @@ var formSubmitHandler = function (event) {
   if (city) {
      getUserRepos(city);
      grabWeatherApi(city);
-   
+     
     nameInputEl.value = '';
     
 
