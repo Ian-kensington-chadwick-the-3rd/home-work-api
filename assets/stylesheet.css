@@ -257,11 +257,13 @@
   .border{
     border:3px solid rgb(0, 0, 0);
     width: 200px;
-    
     color: rgb(0, 0, 0);
   }
   .flexmid{
     display: flex;
     justify-content: center;
     border-bottom: 3px solid #000000;
+  }
+  .todayweather{
+    align-self: center;
   }

@@ -5,8 +5,15 @@ var repoContainerEl = document.querySelector('#repos-container');
 var repoSearchTerm = document.querySelector('#repo-search-term');
 
 var data = this
+var city;
+function storage(city){
 
+  localStorage.setItem('storedCity',JSON.stringify(city))
 
+}
+function displayStorage(){
+localStorage.getItem('storedCity')
+}
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
@@ -17,8 +24,7 @@ var formSubmitHandler = function (event) {
     grabWeatherApi(city);
    
     nameInputEl.value = '';
-    localStorage.setItem(nameInputEl.value, city )
-    localStorage.getItem(nameInputEl.value)
+    
 
   } else {
     alert('Please enter a City name');
@@ -38,6 +44,8 @@ var getUserRepos = function (city) {
           console.log(displayForcastTemp3(data)) 
           console.log(displayForcastTemp4(data)) 
           console.log(displayForcastTemp5(data)) 
+          // storage(city);
+          displayPersonal();
           
           console.log(data)
         });
@@ -92,22 +100,27 @@ console.log(data)
 // creating my 'li' elements to go in my ul
 var infoName = document.getElementById('cityName1');
 var info1 = document.getElementById('cityTemp');
-
+var info2 = document.getElementById('cityCloud')
 // using innerText to create the items I want from weather api
 info1.innerText = grabWeather1.temp + ' °F';
 infoName.innerText= grabWeather0.name + ' City';
+info2.innerText= grabWeather0.weather[0].description;
 // displaying my elements from the api
 document.getElementById('display6').appendChild(infoName);
 document.getElementById('display6').appendChild(info1);
-document.getElementById('display6').appendChild(infoDate);
+document.getElementById('display6').appendChild(info2)
+
 
 
 
 
 }
 function displayPersonal(){
-  var today = dayjs('MMM D, YYYY');
-  $('#displaypersonal').text(today.format('MMM D, YYYY'));
+  var today = dayjs().format('MMM D, YYYY');
+  // $('#displayToday').text(today.format('MMM D, YYYY'));
+  document.getElementById('displayToday').innerText = today;
+
+
 // document.getElementById('displayPersonal1')
 }
 
